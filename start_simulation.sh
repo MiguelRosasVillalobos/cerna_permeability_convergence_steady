@@ -14,9 +14,12 @@ lc2=0.011
 lc3=0.01
 lc4=0.009
 lc5=0.008
+lc6=0.006
+lc7=0.003
+lc8=0.001
 
 # Valores de Reynolds a utilizar
-valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5")
+valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
 
 # Leer valores desde el archivo parametros.txt
 nu=$(grep -oP 'nu\s*=\s*\K[\d.+-]+' parametros.txt)
@@ -86,7 +89,7 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 	mv deltap_extract.py Case_0/
 
 	# Se inicia el cilclo para variar el valor de Reynolds
-	for j in {0..4}; do
+	for j in {0..7}; do
 		#se genera contador k
 		k=$((j + 1))
 
@@ -125,7 +128,7 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 		sed -i '23s/patch/wall/;' "constant/polyMesh/boundary"
 
 		decomposePar
-		mpirun -np 6 simpleFoam -parallel
+		mpirun -np 8 simpleFoam -parallel
 
 		reconstructPar
 		foamToVTK
