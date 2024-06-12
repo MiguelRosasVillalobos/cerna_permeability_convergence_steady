@@ -5,13 +5,7 @@ nu = 0.00000115 // m^2/s (agua a 20°C)
 Ld = 0.11 // m (diametro del ducto)
 
 //Reynolds
-Re = 600 // adimensional
-
-//tamano de malla
-//lc = 0.008 // m
-
-//tamano de malla refinado
-lcc = 0.001 // m
+Re = 150 // adimensional
 
 // radio del ducto
 rd = 0.055 // m (pvc sanitario)
@@ -26,10 +20,10 @@ a = 0.004  // m (Segun placa usada por rodrigo Muñoz)
 rp = 0.003 // m (broca de 6mm)
 
 //numero de poros
-np = 35 // adimensional
+np = 60 // adimensional
 
 //tiempo de simulacion
-tf = 5 // s
+tf = 10 // s
 
 //delta de tiempo
 dt = 0.001 // s

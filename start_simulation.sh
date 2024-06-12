@@ -9,17 +9,15 @@ fi
 # Obtiene la cantidad_simulaciones desde el primer argumento
 cantidad_simulaciones=$1
 
-lc1=0.012
-lc2=0.011
-lc3=0.01
-lc4=0.009
-lc5=0.008
+lc1=0.02
+lc2=0.01
+lc3=0.009
+lc4=0.008
+lc5=0.007
 lc6=0.006
-lc7=0.003
-lc8=0.001
 
 # Valores de Reynolds a utilizar
-valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
+valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6")
 
 # Leer valores desde el archivo parametros.txt
 nu=$(grep -oP 'nu\s*=\s*\K[\d.+-]+' parametros.txt)
