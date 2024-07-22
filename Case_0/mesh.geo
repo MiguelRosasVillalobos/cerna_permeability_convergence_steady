@@ -11,7 +11,7 @@ Mesh.MeshSizeMax = lc;
 //+
 Field[1] = Box;
 
-Field[1].VIn = lc/3.5;
+Field[1].VIn = lc/3;
 
 Field[1].XMin = -rd;
 
@@ -21,9 +21,9 @@ Field[1].YMin = -rd;
 
 Field[1].YMax = rd;
 
-Field[1].ZMin = l1-a-a;
+Field[1].ZMin = l1-2*a;
 
-Field[1].ZMax = l1+a+a+a;
+Field[1].ZMax = l1+10*a;
 
 Background Field = 1;
 
