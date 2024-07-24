@@ -16,28 +16,24 @@ FoamFile
 
 dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 4e-05;
+internalField   uniform 1e-4; // Ajusta según sea necesario
 
 boundaryField
 {
     inlet
     {
-        type            freestream;
-        freestreamValue $internalField;
+        type            fixedValue;
+        value           uniform 1e-4; // Ajusta según sea necesario
     }
-
     outlet
     {
-        type            freestream;
-        freestreamValue $internalField;
+        type            zeroGradient;
     }
-
     Wall
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            fixedValue; // Spalart-Allmaras utiliza fixedValue en lugar de funciones de pared específicas.
+        value           uniform 0; // La viscosidad turbulenta en la pared es cero.
     }
 }
-
 
 // ************************************************************************* //
