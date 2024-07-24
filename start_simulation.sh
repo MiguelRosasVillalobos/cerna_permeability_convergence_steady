@@ -10,13 +10,13 @@ fi
 cantidad_simulaciones=$1
 
 lc1=0.011
-lc2=0.01
-lc3=0.009
-lc4=0.008
-lc5=0.007
-lc6=0.006
-lc7=0.005
-lc8=0.004
+lc2=0.0105
+lc3=0.0095
+lc4=0.0085
+lc5=0.0075
+lc6=0.0065
+lc7=0.0055
+lc8=0.0045
 
 # Valores de Reynolds a utilizar
 valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
