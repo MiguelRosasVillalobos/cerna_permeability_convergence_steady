@@ -19,39 +19,41 @@ solvers
     p
     {
         solver          GAMG;
-        tolerance       1e-10;
-        relTol          0.1;
+        tolerance       1e-07;
+        relTol          0.05;
         smoother        GaussSeidel;
+        nCellsInCoarsestLevel 10; // Ajusta según el tamaño del problema
+        agglomerator    faceAreaPair; // Ajusta según el problema específico
     }
 
     U
     {
         solver          smoothSolver;
-        smoother        GaussSeidel;
+        smoother        symGaussSeidel;
         nSweeps         2;
-        tolerance       1e-10;
-        relTol          0.1;
+        tolerance       1e-07;
+        relTol          0.01;
     }
 
     nuTilda
     {
         solver          smoothSolver;
-        smoother        GaussSeidel;
+        smoother        symGaussSeidel;
         nSweeps         2;
-        tolerance       1e-10;
-        relTol          0.1;
+        tolerance       1e-06;
+        relTol          0.01;
     }
 }
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 0;
+    nNonOrthogonalCorrectors 1;
 
     residualControl
     {
-        p               1e-5;
-        U               1e-5;
-        nuTilda         1e-5;
+        p               1e-06;
+        U               1e-06;
+        nuTilda         1e-06;
     }
 }
 
