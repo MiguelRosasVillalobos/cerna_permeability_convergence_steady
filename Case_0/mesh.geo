@@ -23,7 +23,7 @@ Field[1].YMax = rd;
 
 Field[1].ZMin = l1;
 
-Field[1].ZMax = l1+a;
+Field[1].ZMax = l1+4*a;
 
 Background Field = 1;
 
