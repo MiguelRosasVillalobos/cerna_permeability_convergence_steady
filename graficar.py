@@ -8,7 +8,8 @@ files = [
     "lc3.csv",
     "lc4.csv",
     "lc5.csv",
-    "lc6.csv"
+    "lc6.csv",
+    "lc7.csv",
 ]
 
 # Leer los archivos y almacenar los DataFrames en una lista
@@ -19,12 +20,12 @@ plt.figure(figsize=(14, 8))
 
 # Graficar la columna 'p' para cada archivo
 for i, df in enumerate(dataframes):
-    plt.plot(df['Points:2'], df['p'], label=f'lc{i+1}')
+    plt.plot(df["Points:2"], df["p"] / 9.81, label=f"lc{i+1}")
 
 # Configuraciones del gráfico
-plt.xlabel('Points:2')
-plt.ylabel('Presión (p)')
-plt.title('Comparación de Presión vs Points:2 en diferentes archivos')
+plt.xlabel("Points:2")
+plt.ylabel("Velocidad (m/s)")
+plt.title("Comparación de Velocidad vs Points:2 en diferentes archivos")
 plt.legend()
 plt.grid(True)
 
