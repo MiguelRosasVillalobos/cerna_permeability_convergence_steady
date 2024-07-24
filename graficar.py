@@ -10,6 +10,7 @@ files = [
     "lc5.csv",
     "lc6.csv",
     "lc7.csv",
+    "lc8.csv",
 ]
 
 # Leer los archivos y almacenar los DataFrames en una lista
@@ -23,9 +24,9 @@ for i, df in enumerate(dataframes):
     plt.plot(df["Points:2"], df["p"] / 9.81, label=f"lc{i+1}")
 
 # Configuraciones del gráfico
-plt.xlabel("Points:2")
-plt.ylabel("Velocidad (m/s)")
-plt.title("Comparación de Velocidad vs Points:2 en diferentes archivos")
+plt.xlabel("Distancia z (m)")
+plt.ylabel("Perdidad de Carga (m)")
+plt.title("Comparación de Perdida de Carga vs distancia en diferentes archivos")
 plt.legend()
 plt.grid(True)
 
