@@ -9,14 +9,14 @@ fi
 # Obtiene la cantidad_simulaciones desde el primer argumento
 cantidad_simulaciones=$1
 
-lc1=0.01
-lc2=0.008
-lc3=0.007
-lc4=0.006
-lc5=0.005
-lc6=0.004
-lc7=0.003
-lc8=0.002
+lc1=0.011
+lc2=0.01
+lc3=0.009
+lc4=0.008
+lc5=0.007
+lc6=0.006
+lc7=0.005
+lc8=0.004
 
 # Valores de Reynolds a utilizar
 valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
@@ -25,6 +25,7 @@ valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
 nu=$(grep -oP 'nu\s*=\s*\K[\d.+-]+' parametros.txt)
 Ld=$(grep -oP 'Ld\s*=\s*\K[\d.+-]+' parametros.txt)
 Re=$(grep -oP 'Re\s*=\s*\K[\d.+-]+' parametros.txt)
+v=$(grep -oP 'v\s*=\s*\K[\d.+-]+' parametros.txt)
 
 lcc=$(grep -oP 'lcc\s*=\s*\K[\d.+-]+' parametros.txt)
 rd=$(grep -oP 'rd\s*=\s*\K[\d.+-]+' parametros.txt)
@@ -52,12 +53,14 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 	cp -r "Case_0/geometry_script/" "$carpeta_caso_i/"
 	cp "Case_0/mesh.geo" "$carpeta_caso_i/"
 	cp "Case_0/deltap_extract.py" "$carpeta_caso_i/"
+	cp "graficar.py" "$carpeta_caso_i"
 
 	cd "$carpeta_caso_i/"
 
 	# Reemplazar valores en sus respectivos archivos
 	sed -i "s/\$nuu/$nu/g" ./0/U
 	sed -i "s/\$Ree/$Re/g" ./0/U
+	sed -i "s/\$vv/$v/g" ./0/U
 	sed -i "s/\$nuu/$nu/g" ./constant/transportProperties
 	sed -i "s/\$LL/$Ld/g" ./0/U
 
