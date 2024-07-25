@@ -26,7 +26,7 @@ rp = 0.003 // m (broca de 6mm)
 np = 26 // adimensional
 
 //tiempo de simulacion
-tf = 60 // s
+tf = 5 // s
 
 //delta de tiempo
 dt = 0.01 // s
