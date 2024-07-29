@@ -54,7 +54,6 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 	cp "Case_0/mesh.geo" "$carpeta_caso_i/"
 	cp "Scripts/graficar_p.py" "$carpeta_caso_i"
 	cp "Scripts/graficar_vel.py" "$carpeta_caso_i"
-	cp "Scripts/ajuste.py" "$carpeta_caso_i"
 	cp "Scripts/extractor_p.py" "$carpeta_caso_i"
 	cp "Scripts/extractor_p.sh" "$carpeta_caso_i"
 	cp "Scripts/extractor_vel.py" "$carpeta_caso_i"

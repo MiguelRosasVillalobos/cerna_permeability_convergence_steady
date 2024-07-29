@@ -1,5 +1,5 @@
 # Lista de valores para v
-valores_v=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
+valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
 for j in {0..7}; do
 	# Crear un archivo temporal para el script modificado
 	temp_script="temp_script_${valores_lc[$j]}.py"
