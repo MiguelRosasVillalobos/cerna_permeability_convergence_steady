@@ -23,10 +23,10 @@ a = 0.01  // m (Segun placa usada por rodrigo Muñoz)
 rp = 0.003 // m (broca de 6mm)
 
 //numero de poros
-np = 9 // adimensional
+np = 26 // adimensional
 
 //tiempo de simulacion
-tf = 300 // s
+tf = 700 // s
 
 //delta de tiempo
 dt = 1 // s
