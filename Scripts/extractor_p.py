@@ -12,7 +12,7 @@ paraview.simple._DisableFirstRenderCameraReset()
 # create a new 'Open FOAM Reader'
 v1foam = OpenFOAMReader(
     registrationName="$jj.foam",
-    FileName="/home/miguel/cerna_permeability_convergence_steady/Case_$ii/Case_$ii_$jj/$jj.foam",
+    FileName="$ddir/Case_$ii/Case_$ii_$jj/$jj.foam",
 )
 
 # Properties modified on v1foam
@@ -592,7 +592,7 @@ passArrays1 = PassArrays(registrationName="PassArrays1", Input=plotOverLine1)
 
 # save data
 SaveData(
-    "/home/miguel/cerna_permeability_convergence_steady/Case_$ii/$jj.csv",
+    "$ddir/Case_$ii/$jj.csv",
     proxy=passArrays1,
     PointDataArrays=[
         "U",

@@ -58,7 +58,9 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 	cp "Scripts/extractor_p.sh" "$carpeta_caso_i"
 	cp "Scripts/extractor_vel.py" "$carpeta_caso_i"
 	cp "Scripts/extractor_vel.sh" "$carpeta_caso_i"
-
+	ddir=$(pwd)
+	sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p.py"
+	sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_vel.py"
 	cd "$carpeta_caso_i/"
 
 	# Reemplazar valores en sus respectivos archivos
