@@ -139,7 +139,7 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
     sed -i '23s/patch/wall/;' "constant/polyMesh/boundary"
 
     decomposePar
-    mpirun -np 8 simpleFoam -parallel
+    mpirun -np 8 simpleFoam -parallel >log
     cd ..
   done
   kitty --hold -e bash -c "./extractor_p.sh && ./extractor_vel.sh ; exec bash" &

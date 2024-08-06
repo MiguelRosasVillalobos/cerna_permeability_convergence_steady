@@ -78,8 +78,8 @@ v1foam.CellArrays = [
 ]
 
 # Properties modified on plotOverLine1
-plotOverLine1.Point1 = [0.0, -0.0284000001847744, 0.25]
-plotOverLine1.Point2 = [0.0, 0.0284000001847744, 0.25]
+plotOverLine1.Point1 = [0.0, -0.0284000001847744, 0.612]
+plotOverLine1.Point2 = [0.0, 0.0284000001847744, 0.612]
 
 # show data in view
 plotOverLine1Display = Show(plotOverLine1, renderView1, "GeometryRepresentation")
