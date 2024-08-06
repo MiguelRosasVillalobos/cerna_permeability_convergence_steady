@@ -8,28 +8,28 @@ Ld = 0.0568 // m (diametro del ducto)
 //Re = 10 // adimensional
 
 //Velocidad
-v = 0.5 // m/s
+v = 1 // m/s
 
 // radio del ducto
-rd = 0.0284 // m (pvc sanitario)
+rd = 0.0145 // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 // largo del ducto lado 1
-l1 = 0.15 // m
+l1 = 0.435 // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 // espesor de la placa
-a = 0.01  // m (Segun placa usada por rodrigo Muñoz)
+a = 0.003  // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 // radio del poro
-rp = 0.003 // m (broca de 6mm)
+rp = 0.0025 // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 //numero de poros
-np = 26 // adimensional
+np = 4 // adimensional (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 //tiempo de simulacion
-tf = 700 // s
+tf = 1000 // s
 
 //delta de tiempo
 dt = 1 // s
 
 //escribir resultado cada tantos deltas de tiempo
-wi = 50 // adimensional
+wi = 100 // adimensional

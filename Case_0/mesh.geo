@@ -21,9 +21,9 @@ Field[1].YMin = -rd;
 
 Field[1].YMax = rd;
 
-Field[1].ZMin = l1;
+Field[1].ZMin = l1-2*rd;
 
-Field[1].ZMax = l1+a+0.1;
+Field[1].ZMax = l1+a+20*rd;
 
 Background Field = 1;
 
