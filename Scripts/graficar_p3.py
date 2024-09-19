@@ -6,14 +6,14 @@ plt.rcParams["svg.fonttype"] = "none"
 
 # Cargar los datos de los archivos CSV
 files = [
-    "lc1.csv",
-    "lc2.csv",
-    "lc3.csv",
-    "lc4.csv",
-    "lc5.csv",
-    "lc6.csv",
-    "lc7.csv",
-    "lc8.csv",
+    "p3_lc1.csv",
+    "p3_lc2.csv",
+    "p3_lc3.csv",
+    "p3_lc4.csv",
+    "p3_lc5.csv",
+    "p3_lc6.csv",
+    "p3_lc7.csv",
+    "p3_lc8.csv",
 ]
 
 # Leer los archivos y almacenar los DataFrames en una lista

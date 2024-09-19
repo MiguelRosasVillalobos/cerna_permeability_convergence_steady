@@ -6,6 +6,8 @@
 #### import the simple module from the paraview
 from paraview.simple import *
 
+rd = $rdd
+
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
@@ -79,7 +81,7 @@ v1foam.CellArrays = [
 
 # Properties modified on plotOverLine1
 plotOverLine1.Point1 = [0.0, 0.0, 0.0]
-plotOverLine1.Point2 = [0.0, 0.0, 0.873]
+plotOverLine1.Point2 = [0.0, 0.0, 1 * 2 * rd]
 
 # show data in view
 plotOverLine1Display = Show(plotOverLine1, renderView1, "GeometryRepresentation")
@@ -592,7 +594,7 @@ passArrays1 = PassArrays(registrationName="PassArrays1", Input=plotOverLine1)
 
 # save data
 SaveData(
-    "$ddir/Case_$ii/$jj.csv",
+    "$ddir/Case_$ii/p1_$jj.csv",
     proxy=passArrays1,
     PointDataArrays=[
         "U",

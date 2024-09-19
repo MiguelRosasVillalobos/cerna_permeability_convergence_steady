@@ -1,0 +1,2 @@
+Puntos que cumplen las condiciones: 4
+Puntos que no cumplen las condiciones: 0

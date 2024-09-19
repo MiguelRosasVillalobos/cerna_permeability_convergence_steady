@@ -1,0 +1,212 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2306                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh true;
+snap            true;
+addLayers       true;
+
+geometry
+{
+    inlet.stl
+    {
+        type triSurfaceMesh;
+        name inlet;
+    }
+    outlet.stl
+    {
+        type triSurfaceMesh;
+        name outlet;
+    }
+    plate_inlet.stl
+    {
+        type triSurfaceMesh;
+        name plate_inlet;
+    }
+    plate_outlet.stl
+    {
+        type triSurfaceMesh;
+        name plate_outlet;
+    }
+    porous.stl
+    {
+        type triSurfaceMesh;
+        name porous;
+    }
+    wall_inlet.stl
+    {
+        type triSurfaceMesh;
+        name wall_inlet;
+    }
+    wall_outlet.stl
+    {
+        type triSurfaceMesh;
+        name wall_outlet;
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells 2000000;
+    maxGlobalCells 5000000;
+    minRefinementCells 10;
+    nCellsBetweenLevels 2;
+
+
+    features
+    (
+        // Añadir los eMesh para wall_inlet y wall_outlet
+        {
+            file "wall_inlet.eMesh";
+            level 1; // Nivel de refinamiento para los features
+        }
+        {
+            file "wall_outlet.eMesh";
+            level 1; // Nivel de refinamiento para los features
+        }
+        {
+            file "porous.eMesh";
+            level 1; // Nivel de refinamiento para los features
+        }
+        {
+            file "inlet.eMesh";
+            level 1; // Nivel de refinamiento para los features
+        }
+        {
+            file "outlet.eMesh";
+            level 1; // Nivel de refinamiento para los features
+        }
+    );
+
+    refinementSurfaces
+    {
+        inlet
+        {
+            level (1 1);
+            patchInfo
+            {
+                type patch;
+            }
+        }
+        outlet
+        {
+            level (1 1);
+            patchInfo
+            {
+                type patch;
+            }
+        }
+        plate_inlet
+        {
+            level (1 1);
+        }
+        plate_outlet
+        {
+            level (1 1);
+        }
+        porous
+        {
+            level (1 1);
+        }
+        wall_inlet
+        {
+            level (1 1);
+        }
+        wall_outlet
+        {
+            level (1 1);
+        }
+    }
+
+    resolveFeatureAngle 30;
+
+    refinementRegions
+    {
+        // Regiones de refinamiento
+    }
+
+    locationInMesh (0 0 0.1); // Punto dentro del dominio
+
+    allowFreeStandingZoneFaces true;
+}
+
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 2.0;
+    nSolveIter 100;
+    nRelaxIter 5;
+    nFeatureSnapIter 10;
+    implicitFeatureSnap true;
+    explicitFeatureSnap false;
+    multiRegionFeatureSnap false;
+}
+
+addLayersControls
+{
+    relativeSizes true;
+
+    layers
+    {
+        wall_inlet
+        {
+            nSurfaceLayers 4;
+        }
+        wall_outlet
+        {
+            nSurfaceLayers 4;
+        }
+    }
+
+    expansionRatio 1.1;
+    firstLayerThickness 0.6;
+    minThickness 0.2;
+    nGrow 0;
+    featureAngle 60;
+    nRelaxIter 5;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedialAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
+}
+
+meshQualityControls
+{
+    maxNonOrtho 65;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave 80;
+    minVol 1e-13;
+    minTetQuality 1e-9;
+    minArea -1;
+    minTwist 0.02;
+    minDeterminant 0.001;
+    minFaceWeight 0.05;
+    minVolRatio 0.01;
+    minTriangleTwist -1;
+    nSmoothScale 4;
+    errorReduction 0.75;
+    relaxed
+    {
+        maxNonOrtho 75;
+    }
+}
+
+debug 0;
+mergeTolerance 1e-6;

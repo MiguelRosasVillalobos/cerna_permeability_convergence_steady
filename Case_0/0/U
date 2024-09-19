@@ -26,7 +26,23 @@ v $vv;
 
 boundaryField
 {
-    Wall
+    wall_inlet
+    {
+        type            noSlip;
+    }
+    wall_outlet
+    {
+        type            noSlip;
+    }
+    plate_inlet
+    {
+        type            noSlip;
+    }
+    plate_outlet
+    {
+        type            noSlip;
+    }
+    porous
     {
         type            noSlip;
     }

@@ -9,48 +9,27 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      p;
+    class       dictionary;
+    object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+scale   1.0;
 
-internalField   uniform 0;
+vertices
+(
+    (0.0145 0.0145 -0.01)           
+    (-0.0145 0.0145 -0.01)          
+    (0.0145 -0.0145 -0.01)           
+    (-0.0145 -0.0145 -0.01)          
+    (0.0145 0.0145 0.874)           
+    (-0.0145 0.0145 0.874)          
+    (0.0145 -0.0145 0.874)           
+    (-0.0145 -0.0145 0.874)
+);
 
-boundaryField
-{
+blocks
+(
+  hex (0 1 3 2 4 5 7 6) (20 20 $lcc) simpleGrading (1 1 1)
+);
 
-    wall_inlet
-    {
-        type            zeroGradient;
-    }
-    wall_outlet
-    {
-        type            zeroGradient;
-    }
-    plate_inlet
-    {
-        type            zeroGradient;
-    }
-    plate_outlet
-    {
-        type            zeroGradient;
-    }
-    porous
-    {
-        type            zeroGradient;
-    }
-    inlet
-    {
-        type            zeroGradient;
-    }
-    outlet
-    {
-        type            fixedValue;
-        value           uniform 0;
-    }
-}
-
-
-// ************************************************************************* //

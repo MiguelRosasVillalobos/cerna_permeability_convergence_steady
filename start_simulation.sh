@@ -9,14 +9,14 @@ fi
 # Obtiene la cantidad_simulaciones desde el primer argumento
 cantidad_simulaciones=$1
 
-lc1=0.01
-lc2=0.009
-lc3=0.008
-lc4=0.0065
-lc5=0.006
-lc6=0.0057
-lc7=0.0055
-lc8=0.005
+lc1=100
+lc2=120
+lc3=140
+lc4=160
+lc5=180
+lc6=200
+lc7=220
+lc8=240
 
 # Valores de Reynolds a utilizar
 valores_lc=("lc1" "lc2" "lc3" "lc4" "lc5" "lc6" "lc7" "lc8")
@@ -50,16 +50,28 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
   cp -r "Case_0/0/" "$carpeta_caso_i/"
   cp -r "Case_0/constant/" "$carpeta_caso_i/"
   cp -r "Case_0/system/" "$carpeta_caso_i/"
-  cp -r "Case_0/geometry_script/" "$carpeta_caso_i/"
-  cp "Case_0/mesh.geo" "$carpeta_caso_i/"
-  cp "Scripts/graficar_p.py" "$carpeta_caso_i"
-  cp "Scripts/graficar_vel.py" "$carpeta_caso_i"
-  cp "Scripts/extractor_p.py" "$carpeta_caso_i"
-  cp "Scripts/extractor_p.sh" "$carpeta_caso_i"
-  cp "Scripts/extractor_vel.py" "$carpeta_caso_i"
-  cp "Scripts/extractor_vel.sh" "$carpeta_caso_i"
+  cp "Scripts/graficar_p1.py" "$carpeta_caso_i"
+  cp "Scripts/graficar_p2.py" "$carpeta_caso_i"
+  cp "Scripts/graficar_p3.py" "$carpeta_caso_i"
+  cp "Scripts/graficar_p4.py" "$carpeta_caso_i"
+  cp "Scripts/graficar_p5.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p1.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p2.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p3.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p4.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p5.py" "$carpeta_caso_i"
+  cp "Scripts/extractor_p1.sh" "$carpeta_caso_i"
+  cp "Scripts/extractor_p2.sh" "$carpeta_caso_i"
+  cp "Scripts/extractor_p3.sh" "$carpeta_caso_i"
+  cp "Scripts/extractor_p4.sh" "$carpeta_caso_i"
+  cp "Scripts/extractor_p5.sh" "$carpeta_caso_i"
+  cp -r "./geometries/$carpeta_caso_i/triSurface" "$carpeta_caso_i/constant"
   ddir=$(pwd)
-  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p.py"
+  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p1.py"
+  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p2.py"
+  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p3.py"
+  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p4.py"
+  sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_p5.py"
   sed -i "s|\$ddir|$ddir|g" "./$carpeta_caso_i/extractor_vel.py"
   cd "$carpeta_caso_i/"
 
@@ -88,8 +100,21 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
   sed -i "s/\$dtt/$dt/g" ./system/controlDict
   sed -i "s/\$tff/$tf/g" ./system/controlDict
 
-  sed -i "s/\$ii/$i/g" ./extractor_p.py
-  sed -i "s/\$ii/$i/g" ./extractor_vel.py
+  sed -i "s/\$ii/$i/g" ./extractor_p1.py
+  sed -i "s/\$ii/$i/g" ./extractor_p2.py
+  sed -i "s/\$ii/$i/g" ./extractor_p3.py
+  sed -i "s/\$ii/$i/g" ./extractor_p4.py
+  sed -i "s/\$ii/$i/g" ./extractor_p5.py
+  sed -i "s/\$aa/$a/g" ./extractor_p1.py
+  sed -i "s/\$aa/$a/g" ./extractor_p2.py
+  sed -i "s/\$aa/$a/g" ./extractor_p3.py
+  sed -i "s/\$aa/$a/g" ./extractor_p4.py
+  sed -i "s/\$aa/$a/g" ./extractor_p5.py
+  sed -i "s/\$rdd/$rd/g" ./extractor_p1.py
+  sed -i "s/\$rdd/$rd/g" ./extractor_p2.py
+  sed -i "s/\$rdd/$rd/g" ./extractor_p3.py
+  sed -i "s/\$rdd/$rd/g" ./extractor_p4.py
+  sed -i "s/\$rdd/$rd/g" ./extractor_p5.py
 
   mkdir Case_0
   mv 0/ Case_0/
@@ -98,12 +123,6 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
   mv geometry_script/ Case_0/
   mv mesh.geo Case_0/
   mv mesh.msh Case_0/
-  cd "./Case_0/"
-  cd "./geometry_script/"
-  #Generar mallado gmsh
-  python3 generator_point_process.py
-  ./generate.sh
-  cd ../..
 
   # Se inicia el ciclo para variar el valor de lc
   for j in {0..7}; do
@@ -118,31 +137,22 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
     cp -r Case_0/0/ "$carpeta_lc/"
     cp -r Case_0/constant/ "$carpeta_lc/"
     cp -r Case_0/system/ "$carpeta_lc/"
-    cp -r Case_0/geometry_script/ "$carpeta_lc/"
-    cp Case_0/mesh.geo "$carpeta_lc/"
 
     #Se reemplaza el valor de lc en el archivo 0/U
-    sed -i "s/\$lccc/${!valores_lc[$j]}/g" "$carpeta_lc/mesh.geo"
-    # sed -i "s/\$lccc/${!valores_lc[$j]}/g" "$carpeta_lc/geometry_script/geometry.geo"
+    sed -i "s/\$lcc/${!valores_lc[$j]}/g" "$carpeta_lc/system/blockMeshDict"
 
     cd "$carpeta_lc/"
     touch "${valores_lc[$j]}.foam"
-    gmsh "./mesh.geo" -3
-    #Genera mallado OpenFoam
-    gmshToFoam "mesh.msh"
 
-    # Utiliza grep para eliminar las líneas que contienen la palabra "physicalType" y sobrescribe el archivo original
-    grep -v "physicalType" constant/polyMesh/boundary >constant/polyMesh/boundary.temp
-    mv constant/polyMesh/boundary.temp constant/polyMesh/boundary
-
-    # Reemplaza "patch" por "wall" en las líneas 23
-    sed -i '23s/patch/wall/;' "constant/polyMesh/boundary"
+    surfaceFeatureExtract
+    blockMesh
+    snappyHexMesh -overwrite
 
     decomposePar
-    mpirun -np 8 simpleFoam -parallel >log
+    mpirun -np 6 simpleFoam -parallel >log
     cd ..
   done
-  kitty --hold -e bash -c "./extractor_p.sh && ./extractor_vel.sh ; exec bash" &
+  kitty --hold -e bash -c "./extractor_p1.sh && ./extractor_p2.sh && ./extractor_p3.sh && ./extractor_p4.sh && ./extractor_p5.sh ; exec bash" &
   cd ..
 done
 

@@ -8,7 +8,7 @@ Ld = 0.0568 // m (diametro del ducto)
 //Re = 10 // adimensional
 
 //Velocidad
-v = 1 // m/s
+v = 0.5 // m/s
 
 // radio del ducto
 rd = 0.0145 // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
@@ -26,7 +26,7 @@ rp = 0.0025 // m (paper(2015)On the Performance of Perforated Plate with Optimiz
 np = 4 // adimensional (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)
 
 //tiempo de simulacion
-tf = 1000 // s
+tf = 600 // s
 
 //delta de tiempo
 dt = 1 // s

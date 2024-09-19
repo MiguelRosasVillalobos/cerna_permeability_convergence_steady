@@ -29,10 +29,30 @@ boundaryField
     {
         type            zeroGradient;
     }
-    Wall
+    wall_inlet
     {
-        type            fixedValue; // Spalart-Allmaras utiliza fixedValue en lugar de funciones de pared específicas.
-        value           uniform 0; // La viscosidad turbulenta en la pared es cero.
+        type            fixedValue; 
+        value           uniform 0;
+    }
+    wall_outlet
+    {
+        type            fixedValue; 
+        value           uniform 0;
+    }
+    plate_inlet
+    {
+        type            fixedValue; 
+        value           uniform 0;
+    }
+    plate_outlet
+    {
+        type            fixedValue; 
+        value           uniform 0;
+    }
+    porous
+    {
+        type            fixedValue; 
+        value           uniform 0;
     }
 }
 
