@@ -140,6 +140,9 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 
     #Se reemplaza el valor de lc en el archivo 0/U
     sed -i "s/\$lcc/${!valores_lc[$j]}/g" "$carpeta_lc/system/blockMeshDict"
+    sed -i "s/\$rdd/$rd/g" "$carpeta_lc/system/blockMeshDict"
+    sed -i "s/\$aa/$a/g" "$carpeta_lc/system/blockMeshDict"
+    sed -i "s/\$l11/$l1/g" "$carpeta_lc/system/blockMeshDict"
 
     cd "$carpeta_lc/"
     touch "${valores_lc[$j]}.foam"
