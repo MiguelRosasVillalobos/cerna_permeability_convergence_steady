@@ -27,12 +27,12 @@ plt.figure(figsize=(width_inch, height_inch))
 
 # Graficar la columna 'p' para cada archivo
 for i, df in enumerate(dataframes):
-    plt.plot(df["Points:2"], df["p"] / 9.81, label=f"v{i+1}")
+    plt.plot(df["Points:1"], df["p"] / 9.81, label=f"v{i+1}")
 
 # Configuraciones del gráfico
-plt.xlabel("Distancia z (m)", fontsize=12)
+plt.xlabel("Distancia y (m)", fontsize=12)
 plt.ylabel("Perdidad de Carga (m)", fontsize=12)
-plt.title("Comparación de Perdida de Carga vs distancia z ", fontsize=12)
+plt.title("Comparación de Perdida de Carga vs distancia y ", fontsize=12)
 
 # Añadir una cuadrícula más suave
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
