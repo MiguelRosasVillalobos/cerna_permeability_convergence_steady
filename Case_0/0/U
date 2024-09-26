@@ -18,11 +18,11 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-//nu $nuu;
-//d $LL;
-//Re $Ree;
-//v #eval{$Re * ($nu/$d)};
-v $vv;
+nu $nuu;
+d $LL;
+Re $Ree;
+v #eval{$Re * ($nu/$d)};
+//v $vv;
 
 boundaryField
 {

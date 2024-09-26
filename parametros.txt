@@ -2,13 +2,13 @@
 nu = 0.00000115 // m^2/s (agua a 20°C)
 
 //Longitud caracteristica
-Ld = 0.0568 // m (diametro del ducto)
+Ld = 0.029 // m (diametro del ducto)
 
 //Reynolds
-//Re = 10 // adimensional
+Re = 30000 // adimensional
 
 //Velocidad
-v = 0.5 // m/s
+//v = 0.5 // m/s
 
 // radio del ducto
 rd = 0.0145 // m (paper(2015)On the Performance of Perforated Plate with Optimized Hole Geometry)

@@ -23,6 +23,7 @@ lc $lcc;
 
 lc1 #eval{$lc/2};
 lc2 #eval{$lc/2};
+lc3 #eval{$lc/2};
 z1 #eval{-$a};
 z2 #eval{$l1 -4*$rd};
 z3 #eval{$l1 + $a + 4*$rd};
@@ -52,8 +53,8 @@ vertices
 
 blocks
 (
-  hex (0 1 3 2 4 5 7 6) (25 25 $lc2) simpleGrading (1 1 1)
-  hex (4 5 7 6 8 9 11 10) (25 25 $lc1) simpleGrading (1 1 1)
-  hex (8 9 11 10 12 13 15 14) (25 25 $lc2) simpleGrading (1 1 1)
+  hex (0 1 3 2 4 5 7 6) (25 25 $lc1) simpleGrading (1 1 1)
+  hex (4 5 7 6 8 9 11 10) (25 25 $lc2) simpleGrading (1 1 1)
+  hex (8 9 11 10 12 13 15 14) (25 25 $lc3) simpleGrading (1 1 1)
 );
 
