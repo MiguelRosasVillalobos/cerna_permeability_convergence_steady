@@ -28,7 +28,7 @@ def generar_puntos_en_circulo(num_puntos, radio, distancia_minima):
 
 num_puntos = $npp
 radio = $rdd - 2*$rpp
-distancia_minima = 0*$rpp
+distancia_minima = 2*$rpp
 
 puntos_generados, puntos_cumplen, puntos_no_cumplen = generar_puntos_en_circulo(num_puntos, radio, distancia_minima)
 

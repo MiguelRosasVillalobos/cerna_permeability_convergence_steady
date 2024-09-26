@@ -40,6 +40,7 @@ for ((i = 1; i <= $cantidad_simulaciones; i++)); do
 
   #Generar mallado gmsh
   touch puntos.csv
+  mkdir triSurface
   python3 generator/generator_point_process.py
   freecadcmd ./generator/geometria.py
   rm geometria.step.FCStd

@@ -21,7 +21,7 @@ a $aa;
 rd $rdd;
 lc $lcc;
 
-lc1 #eval{$lc/10};
+lc1 #eval{$lc/2};
 lc2 #eval{$lc/2};
 z1 #eval{-$a};
 z2 #eval{$l1 -4*$rd};
